@@ -132,5 +132,82 @@ public class CampoTeste {
 
         assertTrue(campo22.isAberto() && campo11.isFechado());
     }
+
+    @Test
+    void testeCampoMarcado() {
+        Campo campo = new Campo(1, 1);
+        campo.alternarMarcacao();
+        assertEquals("X", campo.toString());
+    }
+
+    @Test
+    void testeCampoAbertoMinado() {
+        Campo campo = new Campo(1, 1);
+        campo.minar();
+        assertThrows(ExplosaoException.class, campo::abrir);
+        assertEquals("*", campo.toString());
+    }
+
+    @Test
+    void testeCampoAbertoMinasNaVinhanca() {
+        Campo campo = new Campo(1, 1);
+        Campo vizinho = new Campo(1, 2);
+        vizinho.minar();
+        campo.adicionarVizinho(vizinho);
+
+        campo.abrir();
+        assertEquals("1", campo.toString());
+    }
+
+    @Test
+    void testeCampoFechadoNaoMarcado() {
+        Campo campo = new Campo(1,1);
+        assertEquals("?", campo.toString());
+    }
+
+    @Test
+    void testeObjetivoAlcancadoQuandoDesvendado() {
+        Campo campo = new Campo(1,1);
+        campo.abrir();
+        assertTrue(campo.objetivoAlcancado());
+
+    }
+
+    @Test
+    void testeObjetivoAlcancadoQuandoProtegido() {
+        Campo campo = new Campo(1, 1);
+        campo.minar();
+        campo.alternarMarcacao();
+        assertTrue(campo.objetivoAlcancado());
+    }
+
+    @Test
+    void testeObjetivoNaoAlcancadoQuandoFechadoSemMina() {
+        Campo campo = new Campo(1, 1);
+        assertFalse(campo.objetivoAlcancado());
+    }
+
+    @Test
+    void testeObjetivoNaoAlcancadoQuandoMinadoENaoMarcado() {
+        Campo campo = new Campo(1, 1);
+        campo.minar();
+        assertFalse(campo.objetivoAlcancado());
+    }
+
+    @Test
+    void testeReiniciarResetaEstado() {
+        Campo campo = new Campo(1, 1);
+        campo.minar();
+        campo.alternarMarcacao();
+        campo.abrir();
+
+        campo.reiniciar();
+
+        assertFalse(campo.isMarcado());
+        assertFalse(campo.objetivoAlcancado());
+        assertTrue(campo.abrir());
+
+    }
+
 }
 
