@@ -23,7 +23,7 @@ public class Campo {
 
     boolean adicionarVizinho(Campo vizinho) {
         boolean linhaDiferente = linha != vizinho.linha;
-        boolean colunaDiferente = linha != vizinho.coluna;
+        boolean colunaDiferente = coluna != vizinho.coluna;
         boolean diagonal = linhaDiferente && colunaDiferente;
 
         int deltaLinha = Math.abs(linha - vizinho.linha);
@@ -48,14 +48,14 @@ public class Campo {
     }
 
     boolean abrir() {
-        if(!aberto && !marcado) {
+        if (!aberto && !marcado) {
             aberto = true;
 
-            if(minado) {
+            if (minado) {
                 throw new ExplosaoException();
             }
 
-            if(vizinhancaSegura()) {
+            if (vizinhancaSegura()) {
                 vizinhos.forEach(v -> v.abrir());
             }
 
@@ -65,7 +65,24 @@ public class Campo {
         }
     }
 
-    boolean vizinhancaSegura() {
+
+    private boolean vizinhancaSegura() {
         return vizinhos.stream().noneMatch(v -> v.minado);
+    }
+
+    void minar() {
+        minado = true;
+    }
+
+    public boolean isMarcado() {
+        return marcado;
+    }
+
+    public boolean isAberto() {
+        return aberto;
+    }
+
+    public boolean isFechado() {
+        return !isAberto();
     }
 }
