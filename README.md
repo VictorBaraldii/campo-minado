@@ -23,8 +23,10 @@ Clique com o botão direito em Aplicação → Execute 'Aplicacao.main()' .
 O jogo será executado no console da IDE.
 🔹 Sem Terminal (PowerShell/CMD)
 Vá até a raiz do projeto: cd C:\Users\teste\IdeaProjects\campo-minado 2 - java -cp out br.com.victor.cm.Aplicacao
-🖼 Demonstração
-Campo Minado rodando
+
+📸 Demonstração
+![Tela do jogo Campo Minado](IMAGES/img.png)
+
 
 👤 Autor
 
