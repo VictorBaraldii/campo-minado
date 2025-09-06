@@ -14,7 +14,28 @@ Java 17
 JUnit 5 (testículos)
 IntelliJ IDEA (ou qualquer IDE Java)
 📂 Estrutura do Projeto
-campo-minado ├── src │ └── br.com.victor.cm │ ├── excecao │ │ ├── ExplosaoException.java │ │ └── SairException.java │ ├── modelo │ │ ├── Campo.java │ │ └── Tabuleiro.java │ └── visao │ └── TabuleiroConsole.java │ └── Aplicação.java └── teste └── br.com.victor.cm.modelo └── CampoTeste.java
+campo-minado/
+├── .idea/
+├── images/
+│   └── img.png
+├── out/
+├── src/
+│   └── br/com/victor/cm/
+│       ├── excecao/
+│       │   ├── ExplosaoException.java
+│       │   └── SairException.java
+│       ├── modelo/
+│       │   ├── Campo.java
+│       │   └── Tabuleiro.java
+│       └── visao/
+│           ├── TabuleiroConsole.java
+│           └── Aplicacao.java
+├── test/
+│   └── br/com/victor/cm/modelo/
+│       └── CampoTeste.java
+├── .gitignore
+└── campo-minado.iml
+
 
 ▶️Como Executar
 🔹 Sem IntelliJ IDEA
@@ -25,7 +46,8 @@ O jogo será executado no console da IDE.
 Vá até a raiz do projeto: cd C:\Users\teste\IdeaProjects\campo-minado 2 - java -cp out br.com.victor.cm.Aplicacao
 
 📸 Demonstração
-![Tela do jogo Campo Minado](IMAGES/img.png)
+![Demonstração do Campo Minado](https://raw.githubusercontent.com/VictorBaraldii/campo-minado/main/images/img.png)
+
 
 
 👤 Autor
